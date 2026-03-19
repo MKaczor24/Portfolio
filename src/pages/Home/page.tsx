@@ -7,7 +7,7 @@ export default function Home() {
       id="home"
       className="relative isolate min-h-screen overflow-hidden px-6 py-28 pb-12 md:px-10 lg:px-16"
     >
-      <div className="pointer-events-none absolute inset-0 -z-10 bg-[url('/src/assets/bg.webp')] bg-cover bg-center opacity-15" />
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-[url('/src/assets/bg.webp')] bg-cover bg-center opacity-20" />
       <div className="from-background/0 to-background pointer-events-none absolute right-0 bottom-0 left-0 h-48 bg-linear-to-b" />
 
       <section className="mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-10 lg:grid-cols-[1.25fr_0.9fr] lg:gap-16">
