@@ -1,15 +1,18 @@
 import Header from "./components/Header";
-import Home from "./pages/Home/page";
+import Footer from "./components/Footer";
+import { Home, Projects, Stack, Contact } from "./pages/index.ts";
 
 export function App() {
   return (
     <div>
-      <div className="absolute top-0 z-10 w-full">
-        <Header />
-      </div>
+      <Header />
       <div className="h-full w-full">
         <Home />
+        <Projects />
+        <Stack />
+        <Contact />
       </div>
+      <Footer />
     </div>
   );
 }

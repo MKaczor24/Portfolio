@@ -1,33 +1,65 @@
 import { IconFileCv, IconFolderOpen } from "@tabler/icons-react";
+import { Button } from "@/components/ui/button";
 
 export default function Home() {
   return (
-    <div className="relative h-screen w-screen items-center justify-center bg-transparent">
-      <div className="absolute top-0 left-0 flex h-full w-full items-center justify-center bg-[url('/src/assets/bg.webp')] bg-cover bg-fixed bg-center opacity-15"></div>
-      <div className="text-foreground text-shadow-secondary z-10 container mx-auto flex h-full items-center justify-center text-shadow-sm">
-        <div className="flex h-3/4 w-5/6 flex-col items-start justify-evenly gap-6 text-left">
-          <h1 className="text-6xl font-bold">Template header</h1>
-          <h2 className="text-primary text-4xl font-semibold">
-            Overall description example text a bit more of it, example text,
-            Patryk Czupak cwelem jest
-          </h2>
-          <p className="text-primary-foreground text-2xl">
-            Example description witch to the improved way to explore your data,
-            with natural language. Monitoring will no longer be available on the
-            Pro plan in November, 2025
+    <main
+      id="home"
+      className="relative isolate min-h-screen overflow-hidden px-6 py-28 pb-12 md:px-10 lg:px-16"
+    >
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-[url('/src/assets/bg.webp')] bg-cover bg-center opacity-15" />
+      <div className="from-background/0 to-background pointer-events-none absolute right-0 bottom-0 left-0 h-48 bg-linear-to-b" />
+
+      <section className="mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-10 lg:grid-cols-[1.25fr_0.9fr] lg:gap-16">
+        <div className="animate-in fade-in slide-in-from-left-4 duration-750">
+          <p className="text-primary text-shadow-secondary mb-3 text-sm tracking-[0.18em] uppercase text-shadow-md">
+            fullstack developer
           </p>
-          <div className="z-20 flex w-full flex-row items-center justify-around gap-10">
-            <button className="bg-primary text-foreground hover:bg-sidebar-primary shadow-secondary hover:shadow-background flex h-16 w-1/6 items-center gap-2 px-4 py-2 shadow-lg transition-colors duration-300">
-              Get my resume!
-              <IconFileCv size={24} />
-            </button>
-            <button className="bg-primary text-foreground hover:bg-sidebar-primary shadow-secondary hover:shadow-background flex h-16 w-1/6 items-center gap-2 px-4 py-2 shadow-lg transition-colors duration-300">
-              Explore my projects!
-              <IconFolderOpen size={24} />
-            </button>
+          <h1 className="text-foreground text-shadow-secondary max-w-3xl text-4xl leading-tight font-semibold text-balance text-shadow-md sm:text-5xl xl:text-6xl">
+            Building clean interfaces with a technical edge.
+          </h1>
+          <p className="text-muted-foreground text-shadow-secondary mt-6 max-w-2xl text-lg leading-relaxed text-shadow-md">
+            I create performant, modern web experiences focused on readability,
+            speed, and interaction quality. This portfolio is where I share my
+            projects, stack, and the way I approach product work.
+          </p>
+
+          <div className="mt-10 flex w-full flex-col gap-4 sm:w-auto sm:flex-row">
+            <Button
+              asChild
+              size="lg"
+              className="shadow-background h-14 rounded-lg px-7 text-base font-semibold shadow-md transition-all duration-300 hover:-translate-y-0.5"
+            >
+              <a>
+                Get my resume
+                <IconFileCv size={24} />
+              </a>
+            </Button>
+            <Button
+              asChild
+              variant="outline"
+              size="lg"
+              className="border-primary/35 bg-card/70 shadow-background hover:border-primary h-14 rounded-lg px-7 text-base font-semibold shadow-md backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5"
+            >
+              <a href="#projects">
+                Explore projects
+                <IconFolderOpen size={24} />
+              </a>
+            </Button>
           </div>
         </div>
-      </div>
-    </div>
+
+        <aside className="animate-in fade-in slide-in-from-right-4 duration-1000">
+          <div className="border-border/60 from-card/85 to-card/45 shadow-background relative mx-auto w-full max-w-md overflow-hidden rounded-2xl border bg-linear-to-br p-4 shadow-2xl backdrop-blur-md">
+            <div className="bg-primary/20 pointer-events-none absolute top-10 left-10 h-28 w-28 rounded-full blur-2xl" />
+            <img
+              src="https://placehold.co/900x1100"
+              alt="Profile preview"
+              className="h-105 w-full rounded-xl object-cover md:h-130"
+            />
+          </div>
+        </aside>
+      </section>
+    </main>
   );
 }
