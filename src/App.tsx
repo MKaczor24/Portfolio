@@ -13,8 +13,8 @@ export function App() {
             aria-hidden="true"
             className="pointer-events-none absolute inset-0 overflow-hidden"
           >
-            <div className="from-primary/15 to-primary/10 absolute top-[5%] -left-50 h-300 w-300 bg-radial via-violet-300/5 blur-3xl" />
-            <div className="via-primary/10 absolute top-[35%] -left-50 h-100 w-100 bg-radial from-indigo-300/5 to-transparent blur-3xl" />
+            <div className="from-primary/15 to-primary/10 absolute top-[8%] -left-50 h-280 w-280 bg-radial via-violet-300/5 blur-3xl" />
+            <div className="via-primary/10 absolute top-[28%] -left-50 h-80 w-80 bg-radial from-indigo-300/5 to-transparent blur-3xl" />
             <div className="from-primary/15 absolute top-[50%] -right-50 h-200 w-200 bg-radial via-indigo-300/10 to-transparent blur-3xl" />
             <div className="via-primary/6 absolute top-[70%] -right-25 h-100 w-100 bg-radial from-violet-300/10 to-transparent blur-3xl" />
             <div className="from-primary/15 absolute top-[75%] -left-50 h-120 w-120 bg-radial via-indigo-300/6 to-transparent blur-2xl" />

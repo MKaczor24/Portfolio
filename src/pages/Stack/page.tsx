@@ -161,7 +161,7 @@ export default function Stack() {
           </CardContent>
         </Card>
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
           {filteredStack.length === 0 && (
             <p className="text-muted-foreground col-span-full text-center">
               No technologies match the selected categories.
