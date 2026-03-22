@@ -1,11 +1,4 @@
-import {
-  lazy,
-  Suspense,
-  useEffect,
-  useRef,
-  useState,
-  type ComponentType,
-} from "react";
+import { lazy, Suspense } from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Home from "./pages/Home/page";
@@ -30,50 +23,13 @@ function SectionFallback({
   );
 }
 
-function DeferredSection({
-  id,
-  component: Component,
-  fallbackHeightClass,
-}: {
-  id: string;
-  component: ComponentType;
-  fallbackHeightClass: string;
-}) {
-  const [shouldRender, setShouldRender] = useState(false);
-  const triggerRef = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    const target = triggerRef.current;
-    if (!target) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setShouldRender(true);
-          observer.disconnect();
-        }
-      },
-      { rootMargin: "500px 0px" },
-    );
-
-    observer.observe(target);
-    return () => observer.disconnect();
-  }, []);
-
+function SectionsFallback() {
   return (
-    <div ref={triggerRef}>
-      {shouldRender ? (
-        <Suspense
-          fallback={
-            <SectionFallback id={id} heightClass={fallbackHeightClass} />
-          }
-        >
-          <Component />
-        </Suspense>
-      ) : (
-        <SectionFallback id={id} heightClass={fallbackHeightClass} />
-      )}
-    </div>
+    <>
+      <SectionFallback id="projects" heightClass="h-96" />
+      <SectionFallback id="stack" heightClass="h-96" />
+      <SectionFallback id="contact" heightClass="h-72" />
+    </>
   );
 }
 
@@ -96,21 +52,11 @@ export function App() {
             <div className="via-primary/6 absolute top-[85%] -left-25 h-60 w-60 bg-radial from-violet-300/10 to-transparent blur-3xl max-md:opacity-45" />
           </div>
 
-          <DeferredSection
-            id="projects"
-            component={Projects}
-            fallbackHeightClass="h-96"
-          />
-          <DeferredSection
-            id="stack"
-            component={Stack}
-            fallbackHeightClass="h-96"
-          />
-          <DeferredSection
-            id="contact"
-            component={Contact}
-            fallbackHeightClass="h-72"
-          />
+          <Suspense fallback={<SectionsFallback />}>
+            <Projects />
+            <Stack />
+            <Contact />
+          </Suspense>
         </div>
       </div>
       <Footer />
