@@ -224,7 +224,10 @@ export default function Projects() {
                   <ul className="mt-3 flex flex-wrap gap-1.5">
                     {project.stack.map((item) => (
                       <li key={item}>
-                        <Badge variant="outline" className="rounded-full text-xs">
+                        <Badge
+                          variant="outline"
+                          className="rounded-full text-xs"
+                        >
                           {item}
                         </Badge>
                       </li>
