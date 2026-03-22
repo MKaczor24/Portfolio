@@ -112,7 +112,7 @@ export default function Projects() {
                   alt={project.alt}
                   loading="lazy"
                   decoding="async"
-                  className="object-fit h-full w-full rounded-xl"
+                  className="h-full w-full rounded-xl object-cover"
                 />
                 <div className="bg-background/40 pointer-events-none absolute inset-x-4 bottom-4 rounded-b-xl px-4 py-3 backdrop-blur-sm">
                   <h3 className="text-foreground text-base font-semibold">
@@ -131,13 +131,11 @@ export default function Projects() {
                   </p>
                   <ul className="mt-4 flex flex-wrap gap-2">
                     {project.stack.map((item) => (
-                      <Badge
-                        key={item}
-                        variant="outline"
-                        className="rounded-full"
-                      >
-                        {item}
-                      </Badge>
+                      <li key={item}>
+                        <Badge variant="outline" className="rounded-full">
+                          {item}
+                        </Badge>
+                      </li>
                     ))}
                   </ul>
                 </div>
@@ -225,13 +223,11 @@ export default function Projects() {
 
                   <ul className="mt-3 flex flex-wrap gap-1.5">
                     {project.stack.map((item) => (
-                      <Badge
-                        key={item}
-                        variant="outline"
-                        className="rounded-full text-xs"
-                      >
-                        {item}
-                      </Badge>
+                      <li key={item}>
+                        <Badge variant="outline" className="rounded-full text-xs">
+                          {item}
+                        </Badge>
+                      </li>
                     ))}
                   </ul>
                 </div>
