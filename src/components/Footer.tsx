@@ -44,7 +44,7 @@ export default function Footer() {
         />
         <div className="from-background/78 via-background/55 to-background/78 pointer-events-none absolute inset-0 bg-linear-to-r" />
 
-        <div className="relative z-10 grid grid-cols-1 gap-4 md:grid-cols-[1fr_auto_auto] md:items-center md:gap-6">
+        <div className="relative z-10 flex flex-col gap-4 md:flex-row md:items-center md:justify-between md:gap-6">
           <div className="flex flex-wrap items-center gap-3">
             <p className="text-foreground text-xl font-semibold tracking-tight">
               MKaczor
@@ -58,7 +58,7 @@ export default function Footer() {
           </div>
 
           <nav
-            className="flex flex-wrap items-center gap-3"
+            className="flex flex-wrap items-center gap-3 md:justify-center"
             aria-label="Footer Navigation"
           >
             {quickLinks.map((link) => (
@@ -72,7 +72,7 @@ export default function Footer() {
             ))}
           </nav>
 
-          <div className="flex items-center gap-1.5 md:justify-end">
+          <div className="flex items-center gap-1.5 md:ml-auto md:justify-end">
             {socials.map((social) => (
               <Button
                 key={social.label}

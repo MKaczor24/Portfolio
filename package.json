@@ -12,6 +12,7 @@
   "dependencies": {
     "@base-ui/react": "^1.2.0",
     "@fontsource-variable/jetbrains-mono": "^5.2.8",
+    "@formspree/react": "^3.0.0",
     "@icons-pack/react-simple-icons": "^13.11.1",
     "@tabler/icons": "^3.38.0",
     "@tabler/icons-react": "^3.38.0",
@@ -30,7 +31,6 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
-    "@types/node": "^24.11.0",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^5.1.1",

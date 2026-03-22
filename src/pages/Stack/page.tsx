@@ -17,6 +17,8 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
+import { Section } from "@/components/section/Section";
+import { SectionHeading } from "@/components/section/SectionHeading";
 
 const stackCategories = [
   {
@@ -101,95 +103,83 @@ export default function Stack() {
   };
 
   return (
-    <section
-      id="stack"
-      className="relative isolate overflow-hidden px-6 py-20 md:px-10 lg:px-16"
-    >
-      <div className="mx-auto w-full max-w-7xl">
-        <div className="mb-10 flex flex-col gap-2">
-          <h2 className="text-primary mt-4 text-sm tracking-[0.18em] uppercase">
-            Tech stack
-          </h2>
-          <h1 className="text-foreground text-3xl font-bold">
-            Technologies I work with
-          </h1>
-        </div>
+    <Section id="stack">
+      <SectionHeading overline="Tech stack" title="Technologies I work with" />
 
-        <Card className="border-border/60 bg-card/40 shadow-background mb-8 rounded-2xl border py-5 shadow-md">
-          <CardHeader className="px-5">
-            <CardTitle className="text-base">Filter categories</CardTitle>
-          </CardHeader>
-          <CardContent className="px-5">
-            <div className="flex flex-wrap items-center gap-4">
-              {stackCategories.map((category) => (
-                <label
-                  key={category.name}
-                  htmlFor={`filter-${category.name}`}
-                  className="flex items-center gap-2"
-                >
-                  <Checkbox
-                    id={`filter-${category.name}`}
-                    checked={enabledCategories[category.name]}
-                    onCheckedChange={(checked) =>
-                      toggleCategory(category.name, checked)
-                    }
-                    className="rounded-sm"
-                  />
-                  <span className="text-sm">{category.name}</span>
-                </label>
-              ))}
-            </div>
+      <Card className="section-reveal border-border/60 bg-card/40 shadow-background mb-8 rounded-2xl border py-5 shadow-md [animation-delay:80ms]">
+        <CardHeader className="px-5">
+          <CardTitle className="text-base">Filter categories</CardTitle>
+        </CardHeader>
+        <CardContent className="px-5">
+          <div className="flex flex-wrap items-center gap-4">
+            {stackCategories.map((category) => (
+              <label
+                key={category.name}
+                htmlFor={`filter-${category.name}`}
+                className="flex items-center gap-2"
+              >
+                <Checkbox
+                  id={`filter-${category.name}`}
+                  checked={enabledCategories[category.name]}
+                  onCheckedChange={(checked) =>
+                    toggleCategory(category.name, checked)
+                  }
+                  className="rounded-sm"
+                />
+                <span className="text-sm">{category.name}</span>
+              </label>
+            ))}
+          </div>
 
-            <div className="mt-4 flex gap-3">
-              <Button
-                type="button"
-                variant="outline"
-                onClick={selectAll}
-                className="rounded-lg"
-              >
-                Select all
-              </Button>
-              <Button
-                type="button"
-                variant="ghost"
-                onClick={clearAll}
-                className="rounded-lg"
-              >
-                Clear all
-              </Button>
-            </div>
-          </CardContent>
-        </Card>
+          <div className="mt-4 flex gap-3">
+            <Button
+              type="button"
+              variant="outline"
+              onClick={selectAll}
+              className="rounded-lg"
+            >
+              Select all
+            </Button>
+            <Button
+              type="button"
+              variant="ghost"
+              onClick={clearAll}
+              className="rounded-lg"
+            >
+              Clear all
+            </Button>
+          </div>
+        </CardContent>
+      </Card>
 
-        <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
-          {filteredStack.length === 0 && (
-            <p className="text-muted-foreground col-span-full text-center">
-              No technologies match the selected categories.
-            </p>
-          )}
-          {filteredStack.map((tech, index) => (
-            <div key={tech.name} className="perspective-distant">
-              <Card
-                className={`border-border/60 bg-card/35 shadow-background hover:border-primary/50 transform-gpu rounded-2xl border py-4 shadow-md transition-transform duration-300 will-change-transform ${getHoverTransform(index)}`}
-              >
-                <CardContent className="flex flex-col items-start gap-3 px-4">
-                  <div className="flex w-full flex-row items-center justify-start gap-4">
-                    <div className="flex h-11 w-11 items-center justify-center">
-                      {tech.icon}
-                    </div>
-                    <div>
-                      <p className="text-base font-semibold">{tech.name}</p>
-                    </div>
+      <div className="section-reveal grid grid-cols-2 gap-4 [animation-delay:160ms] lg:grid-cols-4">
+        {filteredStack.length === 0 && (
+          <p className="text-muted-foreground col-span-full text-center">
+            No technologies match the selected categories.
+          </p>
+        )}
+        {filteredStack.map((tech, index) => (
+          <div key={tech.name} className="perspective-distant">
+            <Card
+              className={`border-border/60 bg-card/35 shadow-background hover:border-primary/50 transform-gpu rounded-2xl border py-4 shadow-md transition-transform duration-300 will-change-transform ${getHoverTransform(index)}`}
+            >
+              <CardContent className="flex flex-col items-start gap-3 px-4">
+                <div className="flex w-full flex-row items-center justify-start gap-4">
+                  <div className="flex h-11 w-11 items-center justify-center">
+                    {tech.icon}
                   </div>
-                  <Badge variant="outline" className="mt-2 rounded-full">
-                    {tech.category}
-                  </Badge>
-                </CardContent>
-              </Card>
-            </div>
-          ))}
-        </div>
+                  <div>
+                    <p className="text-base font-semibold">{tech.name}</p>
+                  </div>
+                </div>
+                <Badge variant="outline" className="mt-2 rounded-full">
+                  {tech.category}
+                </Badge>
+              </CardContent>
+            </Card>
+          </div>
+        ))}
       </div>
-    </section>
+    </Section>
   );
 }

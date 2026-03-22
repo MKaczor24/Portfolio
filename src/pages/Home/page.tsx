@@ -1,24 +1,32 @@
 import { IconFileCv, IconFolderOpen } from "@tabler/icons-react";
 import { Button } from "@/components/ui/button";
+import { Section } from "@/components/section/Section";
+import profilePreview from "@/assets/profile-hero.webp";
+import bgImg from "@/assets/bg.webp";
 
 export default function Home() {
   return (
-    <main
+    <Section
+      as="main"
       id="home"
-      className="relative isolate min-h-screen overflow-hidden px-6 py-28 pb-12 md:px-10 lg:px-16"
+      className="min-h-screen py-28 pb-12"
+      containerClassName="max-w-6xl"
     >
-      <div className="pointer-events-none absolute inset-0 -z-10 bg-[url('/src/assets/bg.webp')] bg-cover bg-center opacity-20" />
+      <div
+        className="pointer-events-none absolute inset-0 -z-10 bg-cover bg-center opacity-20"
+        style={{ backgroundImage: `url(${bgImg})` }}
+      />
       <div className="from-background/0 to-background pointer-events-none absolute right-0 bottom-0 left-0 h-48 bg-linear-to-b" />
 
-      <section className="mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-10 lg:grid-cols-[1.25fr_0.9fr] lg:gap-16">
-        <div className="animate-in fade-in slide-in-from-left-4 duration-750">
+      <section className="flex w-full flex-col items-center gap-10 lg:flex-row lg:items-center lg:gap-16">
+        <div className="section-reveal w-full lg:flex-[1.25]">
           <p className="text-primary text-shadow-secondary mb-3 text-sm tracking-[0.18em] uppercase text-shadow-md">
             fullstack developer
           </p>
           <h1 className="text-foreground text-shadow-secondary max-w-3xl text-4xl leading-tight font-semibold text-balance text-shadow-md sm:text-5xl xl:text-6xl">
             Building clean interfaces with a technical edge.
           </h1>
-          <p className="text-muted-foreground text-shadow-secondary mt-6 max-w-2xl text-lg leading-relaxed text-shadow-md">
+          <p className="text-muted-foreground/90 text-shadow-secondary mt-6 max-w-2xl text-lg leading-relaxed text-shadow-md">
             I create performant, modern web experiences focused on readability,
             speed, and interaction quality. This portfolio is where I share my
             projects, stack, and the way I approach product work.
@@ -49,17 +57,21 @@ export default function Home() {
           </div>
         </div>
 
-        <aside className="animate-in fade-in slide-in-from-right-4 duration-1000">
-          <div className="border-border/60 from-card/85 to-card/45 shadow-background relative mx-auto w-full max-w-md overflow-hidden rounded-2xl border bg-linear-to-br p-4 shadow-2xl backdrop-blur-md">
+        <aside className="section-reveal w-full [animation-delay:120ms] lg:flex-[0.9]">
+          <div className="border-border/60 from-card/85 to-card/45 shadow-background relative mx-auto w-full max-w-md rounded-2xl border bg-linear-to-br p-4 shadow-md backdrop-blur-md">
             <div className="bg-primary/20 pointer-events-none absolute top-10 left-10 h-28 w-28 rounded-full blur-2xl" />
             <img
-              src="https://placehold.co/900x1100"
+              src={profilePreview}
               alt="Profile preview"
+              width={900}
+              height={1100}
+              fetchPriority="high"
+              decoding="async"
               className="h-105 w-full rounded-xl object-cover md:h-130"
             />
           </div>
         </aside>
       </section>
-    </main>
+    </Section>
   );
 }
