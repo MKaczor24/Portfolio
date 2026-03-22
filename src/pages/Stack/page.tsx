@@ -163,13 +163,15 @@ export default function Stack() {
             <Card
               className={`border-border/60 bg-card/35 shadow-background hover:border-primary/50 transform-gpu rounded-2xl border py-4 shadow-md transition-transform duration-300 will-change-transform ${getHoverTransform(index)}`}
             >
-              <CardContent className="flex flex-col items-start gap-3 px-4">
+              <CardContent className="flex flex-col items-start gap-4 px-4">
                 <div className="flex w-full flex-row items-center justify-start gap-4">
                   <div className="flex h-11 w-11 items-center justify-center">
                     {tech.icon}
                   </div>
                   <div>
-                    <p className="text-base font-semibold">{tech.name}</p>
+                    <p className="text-xs font-semibold md:text-base">
+                      {tech.name}
+                    </p>
                   </div>
                 </div>
                 <Badge variant="outline" className="mt-2 rounded-full">

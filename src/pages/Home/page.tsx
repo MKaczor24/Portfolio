@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Section } from "@/components/section/Section";
 import profilePreview from "@/assets/profile-hero.webp";
 import bgImg from "@/assets/bg.webp";
+import sampleCv from "@/assets/sampleCv.pdf";
 
 export default function Home() {
   return (
@@ -38,7 +39,7 @@ export default function Home() {
               size="lg"
               className="shadow-background h-14 rounded-lg px-7 text-base font-semibold shadow-md transition-all duration-300 hover:-translate-y-0.5"
             >
-              <a>
+              <a href={sampleCv} download>
                 Get my resume
                 <IconFileCv size={24} />
               </a>

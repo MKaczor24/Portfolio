@@ -213,7 +213,7 @@ export default function Projects() {
                           href="https://github.com/akai-org/wosp-puszki"
                           target="_blank"
                           rel="noreferrer"
-                          className="text-primary hover:underline"
+                          className="text-primary text-xs hover:underline"
                         >
                           View AKAI for WOŚP repository
                         </a>
