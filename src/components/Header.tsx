@@ -8,12 +8,16 @@ import {
 } from "@tabler/icons-react";
 import { Button } from "@/components/ui/button";
 
+const DEFAULT_HASH = "#home";
+
 const anchors = [
   { name: "Home", href: "#home" },
   { name: "Projects", href: "#projects" },
   { name: "Stack", href: "#stack" },
   { name: "Contact", href: "#contact" },
 ];
+
+const sectionIds = anchors.map((anchor) => anchor.href.replace("#", ""));
 
 const socialMedia = [
   {
@@ -36,13 +40,15 @@ const socialMedia = [
 export default function Header() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [hash, setHash] = useState<string>(
-    () => window.location.hash || "#home",
+    () => window.location.hash || DEFAULT_HASH,
   );
+
+  const closeSidebar = () => setIsSidebarOpen(false);
 
   useEffect(() => {
     const onHashChange = () => {
-      setHash(window.location.hash || "#home");
-      setIsSidebarOpen(false);
+      setHash(window.location.hash || DEFAULT_HASH);
+      closeSidebar();
     };
 
     window.addEventListener("hashchange", onHashChange);
@@ -57,7 +63,7 @@ export default function Header() {
 
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        setIsSidebarOpen(false);
+        closeSidebar();
       }
     };
 
@@ -70,12 +76,8 @@ export default function Header() {
   }, [isSidebarOpen]);
 
   useEffect(() => {
-    const sectionIds = anchors.map((anchor) => anchor.href.replace("#", ""));
-    const sections = sectionIds
-      .map((id) => document.getElementById(id))
-      .filter((section): section is HTMLElement => section !== null);
-
-    if (!sections.length) return;
+    const activationOffset = 140;
+    let ticking = false;
 
     const setActiveHash = (id: string) => {
       const nextHash = `#${id}`;
@@ -86,62 +88,48 @@ export default function Header() {
       }
     };
 
-    const intersectionById = new Map<string, number>();
-    const getClosestSectionId = () => {
-      const activationOffset = 120;
-      const sorted = sections
-        .map((section) => ({
-          id: section.id,
-          top: section.getBoundingClientRect().top,
-        }))
-        .sort(
-          (a, b) =>
-            Math.abs(a.top - activationOffset) -
-            Math.abs(b.top - activationOffset),
-        );
+    const getSections = () =>
+      sectionIds
+        .map((id) => document.getElementById(id))
+        .filter((section): section is HTMLElement => section !== null);
 
-      return sorted[0]?.id;
+    const updateActiveSection = () => {
+      const sections = getSections();
+      if (!sections.length) return;
+
+      let activeId = sections[0].id;
+      for (const section of sections) {
+        const top = section.getBoundingClientRect().top;
+        if (top - activationOffset <= 0) {
+          activeId = section.id;
+        } else {
+          break;
+        }
+      }
+
+      setActiveHash(activeId);
     };
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          intersectionById.set(
-            entry.target.id,
-            entry.isIntersecting ? entry.intersectionRatio : 0,
-          );
-        });
+    const onScrollOrResize = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        updateActiveSection();
+        ticking = false;
+      });
+    };
 
-        let activeSectionId: string | undefined;
-        let maxRatio = 0;
+    updateActiveSection();
 
-        intersectionById.forEach((ratio, id) => {
-          if (ratio > maxRatio) {
-            maxRatio = ratio;
-            activeSectionId = id;
-          }
-        });
+    window.addEventListener("scroll", onScrollOrResize, { passive: true });
+    window.addEventListener("resize", onScrollOrResize);
+    window.addEventListener("load", onScrollOrResize);
 
-        if (!activeSectionId) {
-          activeSectionId = getClosestSectionId();
-        }
-
-        if (activeSectionId) {
-          setActiveHash(activeSectionId);
-        }
-      },
-      {
-        rootMargin: "-20% 0px -60% 0px",
-        threshold: [0, 0.1, 0.25, 0.4, 0.6, 0.8, 1],
-      },
-    );
-
-    sections.forEach((section) => {
-      intersectionById.set(section.id, 0);
-      observer.observe(section);
-    });
-
-    return () => observer.disconnect();
+    return () => {
+      window.removeEventListener("scroll", onScrollOrResize);
+      window.removeEventListener("resize", onScrollOrResize);
+      window.removeEventListener("load", onScrollOrResize);
+    };
   }, []);
 
   const isActive = (href: string) => hash === href;
@@ -208,7 +196,7 @@ export default function Header() {
       <div
         className={`fixed inset-0 z-40 bg-black/40 transition-opacity duration-300 md:hidden ${isSidebarOpen ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"}`}
         aria-hidden="true"
-        onClick={() => setIsSidebarOpen(false)}
+        onClick={closeSidebar}
       />
 
       <aside
@@ -224,7 +212,7 @@ export default function Header() {
             size="icon"
             className="rounded-lg"
             aria-label="Close navigation"
-            onClick={() => setIsSidebarOpen(false)}
+            onClick={closeSidebar}
           >
             <IconX size={20} />
           </Button>
@@ -238,7 +226,7 @@ export default function Header() {
               variant={isActive(anchor.href) ? "secondary" : "ghost"}
               className="h-11 justify-start rounded-lg px-3 text-sm"
             >
-              <a href={anchor.href} onClick={() => setIsSidebarOpen(false)}>
+              <a href={anchor.href} onClick={closeSidebar}>
                 {anchor.name}
               </a>
             </Button>

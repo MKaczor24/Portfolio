@@ -1,4 +1,4 @@
-import heapUnderflowImg from "@/assets/HeapUnderflow-optimized.webp";
+import heapUnderflowImg from "@/assets/HeapUnderflow.webp";
 import reCropImg from "@/assets/ReCrop.webp";
 import placeholderImg from "@/assets/profile-hero.webp";
 import authAppImg from "@/assets/authapp.webp";
