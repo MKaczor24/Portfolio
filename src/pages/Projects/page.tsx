@@ -215,7 +215,7 @@ export default function Projects() {
                           rel="noreferrer"
                           className="text-primary hover:underline"
                         >
-                          Learn more
+                          View AKAI for WOŚP repository
                         </a>
                       )}
                     </p>
