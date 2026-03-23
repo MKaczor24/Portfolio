@@ -7,18 +7,10 @@ const Projects = lazy(() => import("./pages/Projects/page"));
 const Stack = lazy(() => import("./pages/Stack/page"));
 const Contact = lazy(() => import("./pages/Contact/page"));
 
-function SectionFallback({
-  id,
-  heightClass,
-}: {
-  id: string;
-  heightClass: string;
-}) {
+function SectionFallback({ id }: { id: string }) {
   return (
     <section id={id} className="px-6 py-20 md:px-10 lg:px-16">
-      <div
-        className={`bg-card/35 mx-auto w-full max-w-7xl animate-pulse rounded-2xl ${heightClass}`}
-      />
+      <div className="bg-card/35 mx-auto h-96 w-full max-w-7xl animate-pulse rounded-2xl" />
     </section>
   );
 }
@@ -26,9 +18,9 @@ function SectionFallback({
 function SectionsFallback() {
   return (
     <>
-      <SectionFallback id="projects" heightClass="h-96" />
-      <SectionFallback id="stack" heightClass="h-96" />
-      <SectionFallback id="contact" heightClass="h-72" />
+      <SectionFallback id="projects" />
+      <SectionFallback id="stack" />
+      <SectionFallback id="contact" />
     </>
   );
 }
