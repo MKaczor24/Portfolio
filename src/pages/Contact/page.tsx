@@ -130,6 +130,12 @@ export default function Contact() {
               </Button>
             </div>
           </form>
+          {!formspreeEndpoint && (
+            <p className="text-destructive/90 mt-4 text-center text-xl font-semibold">
+              Contact form is temporarily unavailable. Please contact via
+              LinkedIn
+            </p>
+          )}
         </CardContent>
       </Card>
     </Section>
