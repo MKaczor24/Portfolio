@@ -1,0 +1,113 @@
+{
+  "nav": {
+    "home": "Home",
+    "projects": "Projects",
+    "stack": "Stack",
+    "contact": "Contact",
+    "menu": "Menu",
+    "openNavigation": "Open navigation",
+    "closeNavigation": "Close navigation"
+  },
+  "lang": {
+    "label": "Language",
+    "switchToEnglish": "Switch language to English",
+    "switchToPolish": "Switch language to Polish",
+    "en": "EN",
+    "pl": "PL"
+  },
+  "social": {
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "instagram": "Instagram"
+  },
+  "home": {
+    "role": "fullstack developer",
+    "title": "I'm Michał. I build web apps end to end.",
+    "description": "From database to interface — I focus on clean architecture, solid code, and products that are actually pleasant to use. This is where I share my work and how I think about building things.",
+    "ctaResume": "Get my resume",
+    "ctaProjects": "Explore projects",
+    "profileAlt": "Profile preview"
+  },
+  "projects": {
+    "overline": "Selected work",
+    "title": "Recent projects",
+    "buttons": {
+      "live": "Live",
+      "code": "Code"
+    },
+    "main": {
+      "heap": {
+        "summary": "HeapUnderflow is a full-stack Q&A web application where users can ask technical questions, post answers, and vote on content. It features a modern dark-themed UI with smooth animations and a fully responsive layout.",
+        "alt": "HeapUnderflow project preview"
+      },
+      "recrop": {
+        "summary": "ReCrop is a full-stack web application that empowers users to easily manipulate images and videos through a modern, responsive UI. It offers tools for resizing, background removal and replacement, video compression, and file conversion - all powered by leading cloud services and AI integrations.",
+        "alt": "ReCrop project preview"
+      },
+      "nextCaseStudy": {
+        "summary": "An upcoming production project - architecture decisions and measurable outcomes documented along the way.",
+        "alt": "Upcoming project placeholder"
+      }
+    },
+    "side": {
+      "overline": "Extra builds",
+      "title": "Smaller side projects",
+      "authApp": {
+        "summary": "A simple authentication app featuring user registration, login, and protected routes utilizing MongoDB and JWT",
+        "alt": "AuthApp preview"
+      },
+      "akai": {
+        "summary": "I've contributed to 2026 WOŚP final by fixing a few bugs in the frontend of AKAI's app this year.",
+        "alt": "AKAI for WOŚP preview",
+        "repo": "View AKAI for WOŚP repository"
+      },
+      "miniMeteo": {
+        "summary": "A simple weather app utilizing OpenMeteo API to fetch and display current weather conditions based on user input.",
+        "alt": "MiniMeteo preview"
+      },
+      "shopping": {
+        "summary": "A basic shopping cart application allowing users to add, remove, and manage items in their cart with a clean and responsive UI.",
+        "alt": "Shopping cart preview"
+      }
+    }
+  },
+  "stack": {
+    "overline": "Tech stack",
+    "title": "Technologies I work with",
+    "filter": {
+      "title": "Filter categories",
+      "selectAll": "Select all",
+      "clearAll": "Clear all",
+      "frontend": "Frontend",
+      "backendData": "Backend and Data",
+      "tools": "Tools and Utilities"
+    },
+    "empty": "No technologies match the selected categories."
+  },
+  "contact": {
+    "overline": "Contact",
+    "title": "Let's build something useful",
+    "cardTitle": "Quick message",
+    "cardDescription": "Leave a short note and I will get back to you.",
+    "fields": {
+      "name": "Name",
+      "email": "Email",
+      "message": "Message",
+      "namePlaceholder": "Your name",
+      "messagePlaceholder": "Tell me about your idea"
+    },
+    "buttons": {
+      "sending": "Sending...",
+      "send": "Send Email",
+      "linkedin": "Connect on LinkedIn"
+    },
+    "toastSuccess": "Message sent successfully! I'll get back to you soon.",
+    "fallback": "Contact form is temporarily unavailable. Please contact via LinkedIn"
+  },
+  "footer": {
+    "tag": "Dev portfolio",
+    "thanks": "Thanks for your time.",
+    "navAria": "Footer Navigation",
+    "backToTop": "Back to top"
+  }
+}

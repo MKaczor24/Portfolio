@@ -1,0 +1,113 @@
+{
+  "nav": {
+    "home": "Strona główna",
+    "projects": "Projekty",
+    "stack": "Stack",
+    "contact": "Kontakt",
+    "menu": "Menu",
+    "openNavigation": "Otwórz nawigację",
+    "closeNavigation": "Zamknij nawigację"
+  },
+  "lang": {
+    "label": "Język",
+    "switchToEnglish": "Zmień język na angielski",
+    "switchToPolish": "Zmień język na polski",
+    "en": "EN",
+    "pl": "PL"
+  },
+  "social": {
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "instagram": "Instagram"
+  },
+  "home": {
+    "role": "fullstack developer",
+    "title": "Jestem Michał. Buduję aplikacje webowe od A do Z.",
+    "description": "Od bazy danych po interfejs — stawiam na czystą architekturę, solidny kod i produkty z których dobrze się korzysta. Tu znajdziesz moje projekty i podejście do pracy.",
+    "ctaResume": "Pobierz CV",
+    "ctaProjects": "Zobacz projekty",
+    "profileAlt": "Podgląd profilu"
+  },
+  "projects": {
+    "overline": "Wybrane realizacje",
+    "title": "Ostatnie projekty",
+    "buttons": {
+      "live": "Live",
+      "code": "Code"
+    },
+    "main": {
+      "heap": {
+        "summary": "HeapUnderflow to fullstackowa aplikacja Q&A, w której użytkownicy mogą zadawać pytania techniczne, publikować odpowiedzi i głosować na treści. Posiada nowoczesny ciemny interfejs z płynnymi animacjami i w pełni responsywnym layoutem.",
+        "alt": "Podgląd projektu HeapUnderflow"
+      },
+      "recrop": {
+        "summary": "ReCrop to fullstackowa aplikacja webowa umożliwiająca łatwą manipulację obrazami i wideo przez nowoczesny, responsywny interfejs. Oferuje narzędzia do zmiany rozmiaru, usuwania i zamiany tła, kompresji wideo oraz konwersji plików — zasilane przez wiodące usługi chmurowe i integracje AI.",
+        "alt": "Podgląd projektu ReCrop"
+      },
+      "nextCaseStudy": {
+        "summary": "Nadchodzący projekt produkcyjny — decyzje architektoniczne i mierzalne wyniki dokumentowane na bieżąco.",
+        "alt": "Placeholder nadchodzącego projektu"
+      }
+    },
+    "side": {
+      "overline": "Dodatkowe projekty",
+      "title": "Mniejsze projekty poboczne",
+      "authApp": {
+        "summary": "Aplikacja uwierzytelniająca z rejestracją, logowaniem i chronionymi routami. Stack: MongoDB i JWT.",
+        "alt": "Podgląd AuthApp"
+      },
+      "akai": {
+        "summary": "Naprawiłem kilka bugów we frontendzie aplikacji AKAI na finał WOŚP 2026.",
+        "alt": "Podgląd AKAI dla WOŚP",
+        "repo": "Zobacz repozytorium AKAI dla WOŚP"
+      },
+      "miniMeteo": {
+        "summary": "Aplikacja pogodowa pobierająca aktualne warunki pogodowe z OpenMeteo API na podstawie lokalizacji użytkownika.",
+        "alt": "Podgląd MiniMeteo"
+      },
+      "shopping": {
+        "summary": "Koszyk zakupowy z dodawaniem, usuwaniem i zarządzaniem produktami. Czysty, responsywny interfejs.",
+        "alt": "Podgląd koszyka zakupowego"
+      }
+    }
+  },
+  "stack": {
+    "overline": "Stack technologiczny",
+    "title": "Technologie, z którymi pracuję",
+    "filter": {
+      "title": "Filtruj kategorie",
+      "selectAll": "Zaznacz wszystkie",
+      "clearAll": "Wyczyść wszystkie",
+      "frontend": "Frontend",
+      "backendData": "Backend i dane",
+      "tools": "Narzędzia pomocnicze"
+    },
+    "empty": "Żadna technologia nie pasuje do wybranych kategorii."
+  },
+  "contact": {
+    "overline": "Kontakt",
+    "title": "Zbudujmy coś co będzie działać",
+    "cardTitle": "Szybka wiadomość",
+    "cardDescription": "Zostaw krótką wiadomość, a odezwę się do Ciebie.",
+    "fields": {
+      "name": "Imię",
+      "email": "Email",
+      "message": "Wiadomość",
+      "namePlaceholder": "Twoje imię",
+      "messagePlaceholder": "Opowiedz mi o swoim pomyśle"
+    },
+    "buttons": {
+      "sending": "Wysyłanie...",
+      "send": "Wyślij wiadomość",
+      "linkedin": "Połącz na LinkedIn"
+    },
+    "toastSuccess": "Wiadomość wysłana! Odezwę się wkrótce.",
+    "fallback": "Formularz kontaktowy jest tymczasowo niedostępny. Skontaktuj się przez LinkedIn"
+  },
+  "footer": {
+    "tag": "Portfolio dev",
+    "thanks": "Dzięki za poświęcony czas.",
+    "navAria": "Nawigacja stopki",
+    "backToTop": "Wróć na górę"
+  }
+}

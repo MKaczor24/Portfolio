@@ -13,6 +13,7 @@ import {
   SiPostman,
   SiFigma,
 } from "@icons-pack/react-simple-icons";
+import { useTranslation } from "react-i18next";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -23,6 +24,7 @@ import { SectionHeading } from "@/components/section/SectionHeading";
 const stackCategories = [
   {
     name: "Frontend",
+    labelKey: "stack.filter.frontend",
     technologies: [
       { name: "HTML", icon: <SiHtml5 size={40} color="#E34F26" /> },
       { name: "CSS", icon: <SiCss size={40} color="#1572B6" /> },
@@ -38,6 +40,7 @@ const stackCategories = [
   },
   {
     name: "Backend & Data",
+    labelKey: "stack.filter.backendData",
     technologies: [
       { name: "MongoDB", icon: <SiMongodb size={40} color="#47A248" /> },
       { name: "Prisma", icon: <SiPrisma size={40} color="#FAFAFA" /> },
@@ -46,6 +49,7 @@ const stackCategories = [
   },
   {
     name: "Tools & Utilities",
+    labelKey: "stack.filter.tools",
     technologies: [
       { name: "Postman", icon: <SiPostman size={40} color="#FF6C37" /> },
       { name: "Figma", icon: <SiFigma size={40} color="#F2F2F2" /> },
@@ -54,6 +58,8 @@ const stackCategories = [
 ];
 
 export default function Stack() {
+  const { t } = useTranslation();
+
   const [enabledCategories, setEnabledCategories] = useState<
     Record<string, boolean>
   >({
@@ -91,7 +97,7 @@ export default function Stack() {
       .flatMap((category) =>
         category.technologies.map((technology) => ({
           ...technology,
-          category: category.name,
+          categoryLabelKey: category.labelKey,
         })),
       );
   }, [enabledCategories]);
@@ -104,11 +110,11 @@ export default function Stack() {
 
   return (
     <Section id="stack">
-      <SectionHeading overline="Tech stack" title="Technologies I work with" />
+      <SectionHeading overline={t("stack.overline")} title={t("stack.title")} />
 
       <Card className="section-reveal border-border/60 bg-card/40 shadow-background mb-8 rounded-2xl border py-5 shadow-md [animation-delay:80ms]">
         <CardHeader className="px-5">
-          <CardTitle className="text-base">Filter categories</CardTitle>
+          <CardTitle className="text-base">{t("stack.filter.title")}</CardTitle>
         </CardHeader>
         <CardContent className="px-5">
           <div className="flex flex-wrap items-center gap-4">
@@ -126,7 +132,7 @@ export default function Stack() {
                   }
                   className="rounded-sm"
                 />
-                <span className="text-sm">{category.name}</span>
+                <span className="text-sm">{t(category.labelKey)}</span>
               </label>
             ))}
           </div>
@@ -138,7 +144,7 @@ export default function Stack() {
               onClick={selectAll}
               className="rounded-lg"
             >
-              Select all
+              {t("stack.filter.selectAll")}
             </Button>
             <Button
               type="button"
@@ -146,7 +152,7 @@ export default function Stack() {
               onClick={clearAll}
               className="rounded-lg"
             >
-              Clear all
+              {t("stack.filter.clearAll")}
             </Button>
           </div>
         </CardContent>
@@ -155,7 +161,7 @@ export default function Stack() {
       <div className="section-reveal grid grid-cols-2 gap-4 [animation-delay:160ms] lg:grid-cols-4">
         {filteredStack.length === 0 && (
           <p className="text-muted-foreground col-span-full text-center">
-            No technologies match the selected categories.
+            {t("stack.empty")}
           </p>
         )}
         {filteredStack.map((tech, index) => (
@@ -175,7 +181,7 @@ export default function Stack() {
                   </div>
                 </div>
                 <Badge variant="outline" className="mt-2 rounded-full">
-                  {tech.category}
+                  {t(tech.categoryLabelKey)}
                 </Badge>
               </CardContent>
             </Card>

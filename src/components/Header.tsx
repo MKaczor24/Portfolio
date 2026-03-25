@@ -6,42 +6,51 @@ import {
   IconMenu2,
   IconX,
 } from "@tabler/icons-react";
-import { Button } from "@/components/ui/button";
+import { useTranslation } from "react-i18next";
+import { Button } from "./ui/button";
 
 const DEFAULT_HASH = "#home";
 
 const anchors = [
-  { name: "Home", href: "#home" },
-  { name: "Projects", href: "#projects" },
-  { name: "Stack", href: "#stack" },
-  { name: "Contact", href: "#contact" },
+  { key: "home", href: "#home" },
+  { key: "projects", href: "#projects" },
+  { key: "stack", href: "#stack" },
+  { key: "contact", href: "#contact" },
 ];
 
 const sectionIds = anchors.map((anchor) => anchor.href.replace("#", ""));
 
 const socialMedia = [
   {
-    name: "GitHub",
+    key: "github",
     href: "https://github.com/MKaczor24",
     icon: <IconBrandGithub size={20} />,
   },
   {
-    name: "LinkedIn",
+    key: "linkedin",
     href: "https://www.linkedin.com/in/micha%C5%82-kaczor-8616863a4/",
     icon: <IconBrandLinkedin size={20} />,
   },
   {
-    name: "Instagram",
+    key: "instagram",
     href: "https://instagram.com",
     icon: <IconBrandInstagram size={20} />,
   },
 ];
 
 export default function Header() {
+  const { t, i18n } = useTranslation();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [hash, setHash] = useState<string>(
     () => window.location.hash || DEFAULT_HASH,
   );
+
+  const language = i18n.resolvedLanguage === "pl" ? "pl" : "en";
+  const setLanguage = (nextLanguage: "en" | "pl") => {
+    if (language !== nextLanguage) {
+      void i18n.changeLanguage(nextLanguage);
+    }
+  };
 
   const closeSidebar = () => setIsSidebarOpen(false);
 
@@ -147,22 +156,46 @@ export default function Header() {
           {anchors.map((anchor) => {
             return (
               <Button
-                key={anchor.name}
+                key={anchor.key}
                 asChild
                 variant={isActive(anchor.href) ? "secondary" : "ghost"}
                 className="h-9 rounded-lg px-3 text-sm"
               >
-                <a href={anchor.href}>{anchor.name}</a>
+                <a href={anchor.href}>{t(`nav.${anchor.key}`)}</a>
               </Button>
             );
           })}
         </nav>
 
         <div className="flex items-center gap-1 md:gap-2">
+          <div
+            className="border-primary/60 bg-background/70 hidden items-center overflow-hidden rounded-lg border md:inline-flex"
+            aria-label={t("lang.label")}
+          >
+            <Button
+              type="button"
+              variant={language === "en" ? "secondary" : "ghost"}
+              className="h-9 rounded-none border-r px-2.5 text-xs"
+              aria-label={t("lang.switchToEnglish")}
+              onClick={() => setLanguage("en")}
+            >
+              {t("lang.en")}
+            </Button>
+            <Button
+              type="button"
+              variant={language === "pl" ? "secondary" : "ghost"}
+              className="h-9 rounded-none px-2.5 text-xs"
+              aria-label={t("lang.switchToPolish")}
+              onClick={() => setLanguage("pl")}
+            >
+              {t("lang.pl")}
+            </Button>
+          </div>
+
           {socialMedia.map((social) => {
             return (
               <Button
-                key={social.name}
+                key={social.key}
                 asChild
                 variant="ghost"
                 size="icon"
@@ -172,7 +205,7 @@ export default function Header() {
                   href={social.href}
                   target="_blank"
                   rel="noreferrer"
-                  aria-label={social.name}
+                  aria-label={t(`social.${social.key}`)}
                 >
                   {social.icon}
                 </a>
@@ -184,7 +217,7 @@ export default function Header() {
             type="button"
             variant="ghost"
             size="icon"
-            aria-label="Open navigation"
+            aria-label={t("nav.openNavigation")}
             className="rounded-lg md:hidden"
             onClick={() => setIsSidebarOpen(true)}
           >
@@ -205,29 +238,57 @@ export default function Header() {
         aria-hidden={!isSidebarOpen}
       >
         <div className="mb-8 flex items-center justify-between">
-          <span className="text-foreground text-lg font-semibold">Menu</span>
+          <span className="text-foreground text-lg font-semibold">
+            {t("nav.menu")}
+          </span>
           <Button
             type="button"
             variant="ghost"
             size="icon"
             className="rounded-lg"
-            aria-label="Close navigation"
+            aria-label={t("nav.closeNavigation")}
             onClick={closeSidebar}
           >
             <IconX size={20} />
           </Button>
         </div>
 
+        <div className="flex w-full items-center justify-center">
+          <div
+            className="border-primary/60 bg-background/70 mb-4 inline-flex items-center overflow-hidden rounded-lg border"
+            aria-label={t("lang.label")}
+          >
+            <Button
+              type="button"
+              variant={language === "en" ? "secondary" : "ghost"}
+              className="h-10 rounded-none border-r px-3 text-xs"
+              aria-label={t("lang.switchToEnglish")}
+              onClick={() => setLanguage("en")}
+            >
+              {t("lang.en")}
+            </Button>
+            <Button
+              type="button"
+              variant={language === "pl" ? "secondary" : "ghost"}
+              className="h-10 rounded-none px-3 text-xs"
+              aria-label={t("lang.switchToPolish")}
+              onClick={() => setLanguage("pl")}
+            >
+              {t("lang.pl")}
+            </Button>
+          </div>
+        </div>
+
         <nav className="flex flex-col gap-2" aria-label="Mobile main">
           {anchors.map((anchor) => (
             <Button
-              key={anchor.name}
+              key={anchor.key}
               asChild
               variant={isActive(anchor.href) ? "secondary" : "ghost"}
               className="h-11 justify-start rounded-lg px-3 text-sm"
             >
               <a href={anchor.href} onClick={closeSidebar}>
-                {anchor.name}
+                {t(`nav.${anchor.key}`)}
               </a>
             </Button>
           ))}
@@ -236,7 +297,7 @@ export default function Header() {
         <div className="mt-auto flex w-full items-center justify-center gap-8">
           {socialMedia.map((social) => (
             <Button
-              key={social.name}
+              key={social.key}
               asChild
               variant="outline"
               size="icon"
@@ -246,7 +307,7 @@ export default function Header() {
                 href={social.href}
                 target="_blank"
                 rel="noreferrer"
-                aria-label={social.name}
+                aria-label={t(`social.${social.key}`)}
               >
                 {social.icon}
               </a>

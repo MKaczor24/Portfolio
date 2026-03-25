@@ -4,14 +4,15 @@ import {
   IconBrandInstagram,
   IconBrandLinkedin,
 } from "@tabler/icons-react";
+import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { StripedPattern } from "./magicui/striped-pattern";
 
 const quickLinks = [
-  { label: "Home", href: "#home" },
-  { label: "Projects", href: "#projects" },
-  { label: "Stack", href: "#stack" },
-  { label: "Contact", href: "#contact" },
+  { key: "home", href: "#home" },
+  { key: "projects", href: "#projects" },
+  { key: "stack", href: "#stack" },
+  { key: "contact", href: "#contact" },
 ];
 
 const socials = [
@@ -33,6 +34,8 @@ const socials = [
 ];
 
 export default function Footer() {
+  const { t } = useTranslation();
+
   return (
     <footer className="relative isolate overflow-hidden px-6 py-6 md:px-10 lg:px-16">
       <div className="border-border/50 bg-background/55 shadow-background relative mx-auto w-full max-w-7xl overflow-hidden rounded-2xl border px-5 py-4 shadow-md backdrop-blur-md md:px-6 md:py-5">
@@ -50,24 +53,24 @@ export default function Footer() {
               MKaczor
             </p>
             <span className="text-primary text-xs tracking-[0.16em] uppercase">
-              Dev portfolio
+              {t("footer.tag")}
             </span>
             <span className="text-muted-foreground text-xs">
-              Thanks for your time.
+              {t("footer.thanks")}
             </span>
           </div>
 
           <nav
             className="flex flex-wrap items-center gap-3 md:justify-center"
-            aria-label="Footer Navigation"
+            aria-label={t("footer.navAria")}
           >
             {quickLinks.map((link) => (
               <a
-                key={link.label}
+                key={link.key}
                 href={link.href}
                 className="text-muted-foreground hover:text-foreground text-xs transition-colors"
               >
-                {link.label}
+                {t(`nav.${link.key}`)}
               </a>
             ))}
           </nav>
@@ -99,7 +102,7 @@ export default function Footer() {
             >
               <a href="#home">
                 <IconArrowUp size={14} />
-                Back to top
+                {t("footer.backToTop")}
               </a>
             </Button>
           </div>
