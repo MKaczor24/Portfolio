@@ -1,9 +1,9 @@
 import { IconFileCv, IconFolderOpen } from "@tabler/icons-react";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion, type Variants } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Section } from "@/components/section/Section";
-import { fadeUp, revealViewport, stagger } from "@/lib/motion";
+import { revealViewport, stagger } from "@/lib/motion";
 import profilePreview from "@/assets/profile-hero.webp";
 import bgImg from "@/assets/bg.webp";
 import sampleCv from "@/assets/sampleCv.pdf";
@@ -11,6 +11,18 @@ import sampleCv from "@/assets/sampleCv.pdf";
 export default function Home() {
   const { t } = useTranslation();
   const shouldReduceMotion = useReducedMotion();
+
+  const riseIn = (delay = 0, distance = 16): Variants => ({
+    hidden: { y: distance },
+    visible: {
+      y: 0,
+      transition: {
+        duration: 0.8,
+        delay,
+        ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
+      },
+    },
+  });
 
   const revealState = shouldReduceMotion
     ? {}
@@ -36,10 +48,10 @@ export default function Home() {
       <section className="flex w-full flex-col items-center gap-10 lg:flex-row lg:items-center lg:gap-16">
         <motion.div
           className="w-full lg:flex-[1.25]"
-          variants={fadeUp(0.02)}
+          variants={riseIn(0.02)}
           {...revealState}
         >
-          <p className="text-primary text-shadow-secondary mb-3 text-sm tracking-[0.18em] uppercase text-shadow-md">
+          <p className="text-primary mb-3 text-sm tracking-[0.18em] uppercase">
             {t("home.role")}
           </p>
           <h1 className="text-foreground text-shadow-secondary max-w-3xl text-3xl leading-tight font-semibold text-balance text-shadow-md sm:text-5xl xl:text-6xl">
@@ -54,11 +66,11 @@ export default function Home() {
             variants={stagger(0.08, 0.1)}
             {...revealState}
           >
-            <motion.div variants={fadeUp(0)}>
+            <motion.div variants={riseIn(0)}>
               <Button
                 asChild
                 size="lg"
-                className="shadow-background h-14 rounded-lg px-7 text-base font-semibold shadow-md transition-all duration-300 hover:-translate-y-0.5"
+                className="bg-primary/80 text-primary-foreground hover:bg-primary/75 shadow-background h-14 rounded-lg px-7 text-base font-semibold shadow-md transition-all duration-300 hover:-translate-y-0.5"
               >
                 <a href={sampleCv} download>
                   {t("home.ctaResume")}
@@ -66,7 +78,7 @@ export default function Home() {
                 </a>
               </Button>
             </motion.div>
-            <motion.div variants={fadeUp(0)}>
+            <motion.div variants={riseIn(0)}>
               <Button
                 asChild
                 variant="outline"
@@ -84,7 +96,7 @@ export default function Home() {
 
         <motion.aside
           className="w-full lg:flex-[0.9]"
-          variants={fadeUp(0.14)}
+          variants={riseIn(0.14)}
           {...revealState}
         >
           <div className="border-border/60 from-card/85 to-card/45 shadow-background relative mx-auto w-full max-w-md rounded-2xl border bg-linear-to-br p-4 shadow-md backdrop-blur-md">
