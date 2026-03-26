@@ -29,12 +29,11 @@ export function App() {
             aria-hidden="true"
             className="pointer-events-none absolute inset-0 overflow-hidden"
           >
-            <div className="from-primary/15 to-primary/10 absolute top-[8%] -left-50 h-280 w-280 bg-radial via-violet-300/5 blur-3xl max-md:opacity-55" />
-            <div className="via-primary/10 absolute top-[28%] -left-50 h-80 w-80 bg-radial from-indigo-300/5 to-transparent blur-3xl max-md:opacity-55" />
-            <div className="from-primary/15 absolute top-[50%] -right-50 h-200 w-200 bg-radial via-indigo-300/10 to-transparent blur-3xl max-md:opacity-55" />
-            <div className="via-primary/6 absolute top-[70%] -right-25 h-100 w-100 bg-radial from-violet-300/10 to-transparent blur-3xl max-md:opacity-45" />
-            <div className="from-primary/15 absolute top-[75%] -left-50 h-120 w-120 bg-radial via-indigo-300/6 to-transparent blur-3xl max-md:opacity-45" />
-            <div className="via-primary/6 absolute top-[85%] -left-25 h-60 w-60 bg-radial from-violet-300/10 to-transparent blur-3xl max-md:opacity-45" />
+            <div className="bg-primary/10 absolute top-[10%] -left-64 h-150 w-150 rounded-full opacity-50 blur-3xl" />
+            <div className="absolute top-[20%] -left-40 h-120 w-120 rounded-full bg-indigo-300/8 opacity-50 blur-3xl" />
+            <div className="bg-primary/10 absolute top-[45%] -right-56 h-150 w-150 rounded-full opacity-50 blur-3xl" />
+            <div className="absolute top-[60%] -right-24 h-100 w-100 rounded-full bg-violet-300/8 opacity-50 blur-3xl" />
+            <div className="absolute top-[80%] -left-36 h-100 w-100 rounded-full bg-indigo-300/7 opacity-50 blur-3xl" />
           </div>
 
           <Suspense fallback={<SectionsFallback />}>

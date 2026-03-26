@@ -31,7 +31,7 @@ export default function Home() {
         className="pointer-events-none absolute inset-0 -z-10 bg-cover bg-center opacity-15"
         style={{ backgroundImage: `url(${bgImg})` }}
       />
-      <div className="from-background/0 to-background pointer-events-none absolute right-0 bottom-0 left-0 h-48 bg-linear-to-b" />
+      <div className="from-background/0 via-background/40 to-background absolute right-0 bottom-0 left-0 h-48 bg-linear-to-b" />
 
       <section className="flex w-full flex-col items-center gap-10 lg:flex-row lg:items-center lg:gap-16">
         <motion.div
