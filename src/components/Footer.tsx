@@ -8,13 +8,6 @@ import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { StripedPattern } from "./magicui/striped-pattern";
 
-const quickLinks = [
-  { key: "home", href: "#home" },
-  { key: "projects", href: "#projects" },
-  { key: "stack", href: "#stack" },
-  { key: "contact", href: "#contact" },
-];
-
 const socials = [
   {
     label: "GitHub",
@@ -59,21 +52,6 @@ export default function Footer() {
               {t("footer.thanks")}
             </span>
           </div>
-
-          <nav
-            className="flex flex-wrap items-center gap-3 md:justify-center"
-            aria-label={t("footer.navAria")}
-          >
-            {quickLinks.map((link) => (
-              <a
-                key={link.key}
-                href={link.href}
-                className="text-muted-foreground hover:text-foreground text-xs transition-colors"
-              >
-                {t(`nav.${link.key}`)}
-              </a>
-            ))}
-          </nav>
 
           <div className="flex items-center gap-1.5 md:ml-auto md:justify-end">
             {socials.map((social) => (
