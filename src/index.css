@@ -95,59 +95,11 @@
 }
 
 html,
-body {
-  scroll-behavior: smooth;
-}
-
-html,
 body,
 #root {
   max-width: 100%;
   overflow-x: hidden;
-}
-
-html {
-  scrollbar-width: thin;
-  scrollbar-color: color-mix(in oklch, var(--primary) 62%, white 8%) transparent;
-}
-
-*::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
-}
-
-*::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-*::-webkit-scrollbar-thumb {
-  background: linear-gradient(
-    180deg,
-    color-mix(in oklch, var(--primary) 58%, white 12%),
-    color-mix(in oklch, var(--primary) 76%, black 12%)
-  );
-  border: 2px solid transparent;
-  background-clip: padding-box;
-  border-radius: 999px;
-}
-
-*::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(
-    180deg,
-    color-mix(in oklch, var(--primary) 66%, white 10%),
-    color-mix(in oklch, var(--primary) 84%, black 8%)
-  );
-}
-
-*::-webkit-scrollbar-corner {
-  background: transparent;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html,
-  body {
-    scroll-behavior: auto;
-  }
+  scroll-behavior: smooth;
 }
 
 @layer base {

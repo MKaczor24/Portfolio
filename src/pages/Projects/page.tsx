@@ -19,7 +19,7 @@ import {
 } from "@/assets";
 
 const MOBILE_FLIP_HINT_KEY = "projects-mobile-flip-hint-seen";
-const MOBILE_BREAKPOINT = 979;
+const MOBILE_BREAKPOINT = 1248;
 
 const projects = [
   {
@@ -259,7 +259,7 @@ export default function Projects() {
               variants={fadeUp(0)}
             >
               <div
-                className="relative h-full w-full transition-transform duration-500 transform-3d group-hover:transform-[rotateY(180deg)]"
+                className="relative h-full w-full overscroll-y-none transition-transform duration-500 transform-3d group-hover:transform-[rotateY(180deg)]"
                 onClick={handleMobileHover}
               >
                 <div className="border-border/40 from-card/70 to-card/35 shadow-background absolute inset-0 rounded-2xl border bg-linear-to-br p-2 shadow-md backdrop-blur-sm backface-hidden">
