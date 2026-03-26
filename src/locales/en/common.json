@@ -22,7 +22,7 @@
   },
   "home": {
     "role": "fullstack developer",
-    "title": "I'm Michał. I build web apps end to end.",
+    "title": "I'm Michał.\nI build web apps end to end.",
     "description": "From database to interface — I focus on clean architecture, solid code, and products that are actually pleasant to use. This is where I share my work and how I think about building things.",
     "ctaResume": "Get my resume",
     "ctaProjects": "Explore projects",
@@ -80,8 +80,8 @@
       "selectAll": "Select all",
       "clearAll": "Clear all",
       "frontend": "Frontend",
-      "backendData": "Backend and Data",
-      "tools": "Tools and Utilities"
+      "backendData": "Backend & Data",
+      "tools": "Tools & Utilities"
     },
     "empty": "No technologies match the selected categories."
   },

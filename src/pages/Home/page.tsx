@@ -42,7 +42,7 @@ export default function Home() {
           <p className="text-primary mb-3 text-sm tracking-[0.18em] uppercase">
             {t("home.role")}
           </p>
-          <h1 className="text-foreground text-shadow-secondary max-w-3xl text-3xl leading-tight font-semibold text-balance text-shadow-md sm:text-5xl xl:text-6xl">
+          <h1 className="text-foreground text-shadow-secondary max-w-3xl text-3xl leading-tight font-semibold text-balance whitespace-pre-line text-shadow-md sm:text-5xl xl:text-6xl">
             {t("home.title")}
           </h1>
           <p className="text-muted-foreground/90 text-shadow-secondary mt-6 max-w-2xl text-lg leading-relaxed text-shadow-md">

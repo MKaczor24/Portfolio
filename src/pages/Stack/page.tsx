@@ -203,7 +203,10 @@ export default function Stack() {
                     </p>
                   </div>
                 </div>
-                <Badge variant="outline" className="mt-2 rounded-full">
+                <Badge
+                  variant="outline"
+                  className="mt-2 rounded-full text-[10px] sm:text-xs"
+                >
                   {t(tech.categoryLabelKey)}
                 </Badge>
               </CardContent>
