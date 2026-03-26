@@ -103,6 +103,7 @@ body,
   scroll-behavior: smooth;
   scrollbar-width: thin;
   scrollbar-color: var(--border) transparent;
+  scrollbar-gutter: overlay;
 }
 
 @layer base {
