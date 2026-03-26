@@ -1,10 +1,13 @@
 import { IconArrowUpRight, IconBrandGithub } from "@tabler/icons-react";
+import { motion, useReducedMotion } from "framer-motion";
 import type React from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Section } from "@/components/section/Section";
 import { SectionHeading } from "@/components/section/SectionHeading";
+import { fadeUp, revealViewport, stagger } from "@/lib/motion";
 import {
   heapUnderflowImg,
   reCropImg,
@@ -14,6 +17,9 @@ import {
   miniMeteoImg,
   shoppingImg,
 } from "@/assets";
+
+const MOBILE_FLIP_HINT_KEY = "projects-mobile-flip-hint-seen";
+const MOBILE_BREAKPOINT = 979;
 
 const projects = [
   {
@@ -81,9 +87,41 @@ const sideProjects = [
 
 export default function Projects() {
   const { t } = useTranslation();
+  const shouldReduceMotion = useReducedMotion();
+  const [showMobileFlipHint, setShowMobileFlipHint] = useState(() => {
+    if (typeof window === "undefined") return false;
+    if (window.innerWidth >= MOBILE_BREAKPOINT) return false;
+    return window.localStorage.getItem(MOBILE_FLIP_HINT_KEY) !== "1";
+  });
+
+  const revealState = shouldReduceMotion
+    ? {}
+    : {
+        initial: "hidden" as const,
+        whileInView: "visible" as const,
+        viewport: revealViewport,
+      };
+
+  useEffect(() => {
+    if (!showMobileFlipHint) return;
+
+    const timeoutId = window.setTimeout(() => {
+      setShowMobileFlipHint(false);
+      window.localStorage.setItem(MOBILE_FLIP_HINT_KEY, "1");
+    }, 3000);
+
+    return () => window.clearTimeout(timeoutId);
+  }, [showMobileFlipHint]);
+
+  const dismissMobileFlipHint = () => {
+    if (!showMobileFlipHint) return;
+    setShowMobileFlipHint(false);
+    window.localStorage.setItem(MOBILE_FLIP_HINT_KEY, "1");
+  };
 
   const handleMobileHover = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (window.innerWidth < 979) {
+    if (window.innerWidth < MOBILE_BREAKPOINT) {
+      dismissMobileFlipHint();
       const card = e.currentTarget;
       if (card) {
         card.classList.toggle("transform-[rotateY(180deg)]");
@@ -98,13 +136,44 @@ export default function Projects() {
         title={t("projects.title")}
       />
 
-      <div className="section-reveal grid grid-cols-1 gap-6 [animation-delay:80ms] sm:grid-cols-2 lg:grid-cols-3">
-        {projects.map((project) => (
-          <div key={project.title} className="group h-100 perspective-distant">
+      <motion.div
+        className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
+        variants={stagger(0.08, 0.09)}
+        {...revealState}
+      >
+        {projects.map((project, index) => (
+          <motion.div
+            key={project.title}
+            className="group h-100 perspective-distant"
+            variants={fadeUp(0)}
+          >
             <div
               className="relative h-full w-full transition-transform duration-700 transform-3d group-hover:transform-[rotateY(180deg)]"
               onClick={handleMobileHover}
             >
+              {index === 0 && showMobileFlipHint ? (
+                <motion.div
+                  className="bg-primary text-primary-foreground border-foreground/20 pointer-events-none absolute inset-x-8 top-8 z-20 rounded-lg border px-4 py-2 text-center text-xs font-semibold tracking-wide shadow-xl lg:hidden"
+                  initial={{ opacity: 0, y: -8, scale: 0.96 }}
+                  animate={{
+                    opacity: [0, 0.5, 1, 1, 0.5, 0],
+                    y: [-4, 0, 0, 0, -4],
+                    scale: [0.98, 1, 1.02, 1, 0.98],
+                  }}
+                  transition={{
+                    duration: 3,
+                    times: [0, 0.1, 0.5, 0.9, 0.95, 1],
+                    repeat: 1,
+                  }}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    dismissMobileFlipHint();
+                  }}
+                >
+                  {t("projects.mobileFlipHint")}
+                </motion.div>
+              ) : null}
+
               <div className="border-border/60 from-card/85 to-card/45 shadow-background absolute inset-0 rounded-2xl border bg-linear-to-br p-4 shadow-md backdrop-blur-md backface-hidden">
                 <img
                   src={project.image}
@@ -162,10 +231,14 @@ export default function Projects() {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         ))}
-      </div>
-      <div className="section-reveal mx-auto mt-18 w-full max-w-7xl [animation-delay:160ms]">
+      </motion.div>
+      <motion.div
+        className="mx-auto mt-18 w-full max-w-7xl"
+        variants={fadeUp(0.14)}
+        {...revealState}
+      >
         <SectionHeading
           overline={t("projects.side.overline")}
           title={t("projects.side.title")}
@@ -174,11 +247,16 @@ export default function Projects() {
           titleClassName="text-xl sm:text-2xl"
         />
 
-        <div className="no-scrollbar flex flex-col items-center justify-start gap-8 overflow-x-auto py-4 lg:flex-row">
+        <motion.div
+          className="no-scrollbar flex flex-col items-center justify-start gap-8 overflow-x-auto py-4 lg:flex-row"
+          variants={stagger(0.04, 0.07)}
+          {...revealState}
+        >
           {sideProjects.map((project) => (
-            <div
+            <motion.div
               key={project.title}
               className="group h-60 w-60 perspective-normal"
+              variants={fadeUp(0)}
             >
               <div
                 className="relative h-full w-full transition-transform duration-500 transform-3d group-hover:transform-[rotateY(180deg)]"
@@ -234,10 +312,10 @@ export default function Projects() {
                   </ul>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </Section>
   );
 }

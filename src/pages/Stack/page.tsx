@@ -13,6 +13,7 @@ import {
   SiPostman,
   SiFigma,
 } from "@icons-pack/react-simple-icons";
+import { motion, useReducedMotion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -20,6 +21,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Section } from "@/components/section/Section";
 import { SectionHeading } from "@/components/section/SectionHeading";
+import { fadeUp, revealViewport, stagger } from "@/lib/motion";
 
 const stackCategories = [
   {
@@ -59,6 +61,15 @@ const stackCategories = [
 
 export default function Stack() {
   const { t } = useTranslation();
+  const shouldReduceMotion = useReducedMotion();
+
+  const revealState = shouldReduceMotion
+    ? {}
+    : {
+        initial: "hidden" as const,
+        whileInView: "visible" as const,
+        viewport: revealViewport,
+      };
 
   const [enabledCategories, setEnabledCategories] = useState<
     Record<string, boolean>
@@ -112,60 +123,72 @@ export default function Stack() {
     <Section id="stack">
       <SectionHeading overline={t("stack.overline")} title={t("stack.title")} />
 
-      <Card className="section-reveal border-border/60 bg-card/40 shadow-background mb-8 rounded-2xl border py-5 shadow-md [animation-delay:80ms]">
-        <CardHeader className="px-5">
-          <CardTitle className="text-base">{t("stack.filter.title")}</CardTitle>
-        </CardHeader>
-        <CardContent className="px-5">
-          <div className="flex flex-wrap items-center gap-4">
-            {stackCategories.map((category) => (
-              <label
-                key={category.name}
-                htmlFor={`filter-${category.name}`}
-                className="flex items-center gap-2"
+      <motion.div variants={fadeUp(0.06)} {...revealState}>
+        <Card className="border-border/60 bg-card/40 shadow-background mb-8 rounded-2xl border py-5 shadow-md">
+          <CardHeader className="px-5">
+            <CardTitle className="text-base">
+              {t("stack.filter.title")}
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="px-5">
+            <div className="flex flex-wrap items-center gap-4">
+              {stackCategories.map((category) => (
+                <label
+                  key={category.name}
+                  htmlFor={`filter-${category.name}`}
+                  className="flex items-center gap-2"
+                >
+                  <Checkbox
+                    id={`filter-${category.name}`}
+                    checked={enabledCategories[category.name]}
+                    onCheckedChange={(checked) =>
+                      toggleCategory(category.name, checked)
+                    }
+                    className="rounded-sm"
+                  />
+                  <span className="text-sm">{t(category.labelKey)}</span>
+                </label>
+              ))}
+            </div>
+
+            <div className="mt-4 flex gap-3">
+              <Button
+                type="button"
+                variant="outline"
+                onClick={selectAll}
+                className="rounded-lg"
               >
-                <Checkbox
-                  id={`filter-${category.name}`}
-                  checked={enabledCategories[category.name]}
-                  onCheckedChange={(checked) =>
-                    toggleCategory(category.name, checked)
-                  }
-                  className="rounded-sm"
-                />
-                <span className="text-sm">{t(category.labelKey)}</span>
-              </label>
-            ))}
-          </div>
+                {t("stack.filter.selectAll")}
+              </Button>
+              <Button
+                type="button"
+                variant="ghost"
+                onClick={clearAll}
+                className="rounded-lg"
+              >
+                {t("stack.filter.clearAll")}
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
+      </motion.div>
 
-          <div className="mt-4 flex gap-3">
-            <Button
-              type="button"
-              variant="outline"
-              onClick={selectAll}
-              className="rounded-lg"
-            >
-              {t("stack.filter.selectAll")}
-            </Button>
-            <Button
-              type="button"
-              variant="ghost"
-              onClick={clearAll}
-              className="rounded-lg"
-            >
-              {t("stack.filter.clearAll")}
-            </Button>
-          </div>
-        </CardContent>
-      </Card>
-
-      <div className="section-reveal grid grid-cols-2 gap-4 [animation-delay:160ms] lg:grid-cols-4">
+      <motion.div
+        className="grid grid-cols-2 gap-4 lg:grid-cols-4"
+        variants={stagger(0.1, 0.06)}
+        {...revealState}
+      >
         {filteredStack.length === 0 && (
           <p className="text-muted-foreground col-span-full text-center">
             {t("stack.empty")}
           </p>
         )}
         {filteredStack.map((tech, index) => (
-          <div key={tech.name} className="perspective-distant">
+          <motion.div
+            key={tech.name}
+            className="perspective-distant"
+            variants={fadeUp(0)}
+          >
             <Card
               className={`border-border/60 bg-card/35 shadow-background hover:border-primary/50 transform-gpu rounded-2xl border py-4 shadow-md transition-transform duration-300 will-change-transform ${getHoverTransform(index)}`}
             >
@@ -185,9 +208,9 @@ export default function Stack() {
                 </Badge>
               </CardContent>
             </Card>
-          </div>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </Section>
   );
 }

@@ -101,7 +101,9 @@ export default function Footer() {
               className="ml-2 rounded-lg px-3 text-xs"
             >
               <a href="#home">
-                <IconArrowUp size={14} />
+                <>
+                  <IconArrowUp size={14} />
+                </>
                 {t("footer.backToTop")}
               </a>
             </Button>

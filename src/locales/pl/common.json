@@ -31,6 +31,7 @@
   "projects": {
     "overline": "Wybrane realizacje",
     "title": "Ostatnie projekty",
+    "mobileFlipHint": "Dotknij karty, aby odwrócić",
     "buttons": {
       "live": "Live",
       "code": "Code"

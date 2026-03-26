@@ -31,6 +31,7 @@
   "projects": {
     "overline": "Selected work",
     "title": "Recent projects",
+    "mobileFlipHint": "Tap card to flip",
     "buttons": {
       "live": "Live",
       "code": "Code"

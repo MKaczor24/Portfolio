@@ -99,6 +99,17 @@ body {
   scroll-behavior: smooth;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  html,
+  body {
+    scroll-behavior: auto;
+  }
+
+  .section-reveal {
+    animation: none !important;
+  }
+}
+
 @layer base {
   input:-webkit-autofill,
   input:-webkit-autofill:hover,

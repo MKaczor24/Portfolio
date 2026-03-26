@@ -41,6 +41,7 @@ const socialMedia = [
 export default function Header() {
   const { t, i18n } = useTranslation();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const [hash, setHash] = useState<string>(
     () => window.location.hash || DEFAULT_HASH,
   );
@@ -83,6 +84,17 @@ export default function Header() {
       window.removeEventListener("keydown", onKeyDown);
     };
   }, [isSidebarOpen]);
+
+  useEffect(() => {
+    const updateScrolled = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+
+    updateScrolled();
+    window.addEventListener("scroll", updateScrolled, { passive: true });
+
+    return () => window.removeEventListener("scroll", updateScrolled);
+  }, []);
 
   useEffect(() => {
     const activationOffset = 140;
@@ -145,7 +157,13 @@ export default function Header() {
 
   return (
     <header className="animate-in slide-in-from-top-10 fixed top-0 z-50 w-full px-4 pt-4 duration-750">
-      <div className="border-border/60 bg-background/60 shadow-background mx-auto flex w-full max-w-7xl items-center justify-between rounded-2xl border px-4 py-3 shadow-lg backdrop-blur-xl md:px-6">
+      <div
+        className={`mx-auto flex w-full max-w-7xl items-center justify-between rounded-2xl border px-4 py-3 shadow-lg backdrop-blur-xl transition-all duration-300 md:px-6 ${
+          isScrolled
+            ? "border-border/80 bg-background/78 shadow-xl"
+            : "border-border/60 bg-background/60 shadow-background"
+        }`}
+      >
         <a href="#home" className="group flex items-baseline gap-2">
           <span className="text-foreground text-xl font-semibold tracking-tight md:text-2xl">
             MKaczor
