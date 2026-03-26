@@ -71,14 +71,12 @@ export default function Header() {
     };
 
     updateScrolled();
-    window.addEventListener("scroll", updateScrolled, { passive: true });
     document.addEventListener("scroll", updateScrolled, {
       passive: true,
       capture: true,
     });
 
     return () => {
-      window.removeEventListener("scroll", updateScrolled);
       document.removeEventListener("scroll", updateScrolled, true);
     };
   }, []);
@@ -129,19 +127,13 @@ export default function Header() {
 
     updateActiveSection();
 
-    window.addEventListener("scroll", onScrollOrResize, { passive: true });
     document.addEventListener("scroll", onScrollOrResize, {
       passive: true,
       capture: true,
     });
-    window.addEventListener("resize", onScrollOrResize);
-    window.addEventListener("load", onScrollOrResize);
 
     return () => {
-      window.removeEventListener("scroll", onScrollOrResize);
       document.removeEventListener("scroll", onScrollOrResize, true);
-      window.removeEventListener("resize", onScrollOrResize);
-      window.removeEventListener("load", onScrollOrResize);
     };
   }, []);
 
