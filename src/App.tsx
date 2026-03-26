@@ -36,7 +36,6 @@ export function App() {
             aria-hidden="true"
             className="pointer-events-none absolute inset-0 overflow-hidden"
           >
-            <div className="bg-gradient-grain absolute inset-0" />
             <div className="from-primary/15 to-primary/10 absolute top-[8%] -left-50 h-280 w-280 bg-radial via-violet-300/5 blur-3xl max-md:opacity-55" />
             <div className="via-primary/10 absolute top-[28%] -left-50 h-80 w-80 bg-radial from-indigo-300/5 to-transparent blur-3xl max-md:opacity-55" />
             <div className="from-primary/15 absolute top-[50%] -right-50 h-200 w-200 bg-radial via-indigo-300/10 to-transparent blur-3xl max-md:opacity-55" />

@@ -1,4 +1,6 @@
 import type { ElementType, ReactNode } from "react";
+import { motion, useReducedMotion } from "framer-motion";
+import { fadeUp, revealViewport } from "@/lib/motion";
 import { cn } from "@/lib/utils";
 
 type SectionHeadingProps = {
@@ -19,9 +21,22 @@ export function SectionHeading({
   titleAs,
 }: SectionHeadingProps) {
   const TitleTag = titleAs ?? "h2";
+  const shouldReduceMotion = useReducedMotion();
+
+  const revealState = shouldReduceMotion
+    ? {}
+    : {
+        initial: "hidden" as const,
+        whileInView: "visible" as const,
+        viewport: revealViewport,
+      };
 
   return (
-    <div className={cn("section-reveal mb-10 flex flex-col gap-2", className)}>
+    <motion.div
+      className={cn("mb-10 flex flex-col gap-2", className)}
+      variants={fadeUp(0.04)}
+      {...revealState}
+    >
       {overline ? (
         <p
           className={cn(
@@ -40,6 +55,6 @@ export function SectionHeading({
       >
         {title}
       </TitleTag>
-    </div>
+    </motion.div>
   );
 }

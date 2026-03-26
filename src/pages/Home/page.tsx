@@ -1,9 +1,9 @@
 import { IconFileCv, IconFolderOpen } from "@tabler/icons-react";
-import { motion, useReducedMotion, type Variants } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Section } from "@/components/section/Section";
-import { revealViewport, stagger } from "@/lib/motion";
+import { revealViewport, riseIn, stagger } from "@/lib/motion";
 import profilePreview from "@/assets/profile-hero.webp";
 import bgImg from "@/assets/bg.webp";
 import sampleCv from "@/assets/sampleCv.pdf";
@@ -11,18 +11,6 @@ import sampleCv from "@/assets/sampleCv.pdf";
 export default function Home() {
   const { t } = useTranslation();
   const shouldReduceMotion = useReducedMotion();
-
-  const riseIn = (delay = 0, distance = 16): Variants => ({
-    hidden: { y: distance },
-    visible: {
-      y: 0,
-      transition: {
-        duration: 0.8,
-        delay,
-        ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
-      },
-    },
-  });
 
   const revealState = shouldReduceMotion
     ? {}
@@ -40,7 +28,7 @@ export default function Home() {
       containerClassName="max-w-6xl"
     >
       <div
-        className="pointer-events-none absolute inset-0 -z-10 bg-cover bg-center opacity-20"
+        className="pointer-events-none absolute inset-0 -z-10 bg-cover bg-center opacity-15"
         style={{ backgroundImage: `url(${bgImg})` }}
       />
       <div className="from-background/0 to-background pointer-events-none absolute right-0 bottom-0 left-0 h-48 bg-linear-to-b" />
