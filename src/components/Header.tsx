@@ -66,34 +66,21 @@ export default function Header() {
   }, []);
 
   useEffect(() => {
-    if (!isSidebarOpen) return;
-
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        closeSidebar();
-      }
-    };
-
-    window.addEventListener("keydown", onKeyDown);
-
-    return () => {
-      document.body.style.overflow = previousOverflow;
-      window.removeEventListener("keydown", onKeyDown);
-    };
-  }, [isSidebarOpen]);
-
-  useEffect(() => {
     const updateScrolled = () => {
       setIsScrolled(window.scrollY > 10);
     };
 
     updateScrolled();
     window.addEventListener("scroll", updateScrolled, { passive: true });
+    document.addEventListener("scroll", updateScrolled, {
+      passive: true,
+      capture: true,
+    });
 
-    return () => window.removeEventListener("scroll", updateScrolled);
+    return () => {
+      window.removeEventListener("scroll", updateScrolled);
+      document.removeEventListener("scroll", updateScrolled, true);
+    };
   }, []);
 
   useEffect(() => {
@@ -143,11 +130,16 @@ export default function Header() {
     updateActiveSection();
 
     window.addEventListener("scroll", onScrollOrResize, { passive: true });
+    document.addEventListener("scroll", onScrollOrResize, {
+      passive: true,
+      capture: true,
+    });
     window.addEventListener("resize", onScrollOrResize);
     window.addEventListener("load", onScrollOrResize);
 
     return () => {
       window.removeEventListener("scroll", onScrollOrResize);
+      document.removeEventListener("scroll", onScrollOrResize, true);
       window.removeEventListener("resize", onScrollOrResize);
       window.removeEventListener("load", onScrollOrResize);
     };
