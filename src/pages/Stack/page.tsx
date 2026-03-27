@@ -113,6 +113,17 @@ export default function Stack() {
       );
   }, [enabledCategories]);
 
+  const enabledCategoriesKey = useMemo(
+    () =>
+      stackCategories
+        .map(
+          (category) =>
+            `${category.name}:${enabledCategories[category.name] ? "1" : "0"}`,
+        )
+        .join("|"),
+    [enabledCategories],
+  );
+
   const getHoverTransform = (index: number) => {
     return index % 2 === 0
       ? "hover:[transform:rotateY(10deg)_rotateX(-5deg)_translateY(-5px)]"
@@ -174,6 +185,7 @@ export default function Stack() {
       </motion.div>
 
       <motion.div
+        key={enabledCategoriesKey}
         className="grid grid-cols-2 gap-4 lg:grid-cols-4"
         variants={stagger(0.1, 0.06)}
         {...revealState}
