@@ -12,6 +12,10 @@ import {
   SiPostgresql,
   SiPostman,
   SiFigma,
+  SiGit,
+  SiNodedotjs,
+  SiDocker,
+  SiExpress,
 } from "@icons-pack/react-simple-icons";
 import { motion, useReducedMotion } from "framer-motion";
 import { useTranslation } from "react-i18next";
@@ -47,6 +51,8 @@ const stackCategories = [
       { name: "MongoDB", icon: <SiMongodb size={40} color="#47A248" /> },
       { name: "Prisma", icon: <SiPrisma size={40} color="#FAFAFA" /> },
       { name: "PostgreSQL", icon: <SiPostgresql size={40} color="#336791" /> },
+      { name: "Node.js", icon: <SiNodedotjs size={40} color="#339933" /> },
+      { name: "Express", icon: <SiExpress size={40} color="#FAFAFA" /> },
     ],
   },
   {
@@ -55,6 +61,8 @@ const stackCategories = [
     technologies: [
       { name: "Postman", icon: <SiPostman size={40} color="#FF6C37" /> },
       { name: "Figma", icon: <SiFigma size={40} color="#F2F2F2" /> },
+      { name: "Docker", icon: <SiDocker size={40} color="#2496ED" /> },
+      { name: "Git", icon: <SiGit size={40} color="#F05033" /> },
     ],
   },
 ];
