@@ -6,7 +6,7 @@ import { Section } from "@/components/section/Section";
 import { revealViewport, riseIn, stagger } from "@/lib/motion";
 import profilePreview from "@/assets/profile-hero.webp";
 import bgImg from "@/assets/bg.webp";
-import sampleCv from "@/assets/sampleCv.pdf";
+import CV_portfolio from "@/assets/CV_portfolio.pdf";
 
 export default function Home() {
   const { t } = useTranslation();
@@ -60,7 +60,7 @@ export default function Home() {
                 size="lg"
                 className="bg-primary/80 text-primary-foreground hover:bg-primary/75 shadow-background h-14 rounded-lg px-7 text-base font-semibold shadow-md transition-all duration-300 hover:-translate-y-0.5"
               >
-                <a href={sampleCv} download>
+                <a href={CV_portfolio} download>
                   {t("home.ctaResume")}
                   <IconFileCv size={24} />
                 </a>

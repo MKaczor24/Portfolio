@@ -1,73 +1,108 @@
-# React + TypeScript + Vite
+# Michal Kaczor | Fullstack Developer Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A personal portfolio website focused on clean UI, smooth interactions, and practical presentation of real projects.
 
-Currently, two official plugins are available:
+Built to showcase selected work, technology stack, and contact options in a fast and responsive single-page experience.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-7-646CFF?logo=vite&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?logo=tailwindcss&logoColor=white)
+![Framer Motion](https://img.shields.io/badge/Motion-Framer-0055FF)
+![i18next](https://img.shields.io/badge/i18n-i18next-26A69A)
 
-## React Compiler
+## Live
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Production: [https://mkaczor.me](https://mkaczor.me)
 
-## Expanding the ESLint configuration
+## About
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+This portfolio is a production-style frontend project built with a focus on:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- intentional visual design with animated sections,
+- bilingual content (English and Polish),
+- responsive layout across mobile and desktop,
+- clean component architecture with reusable UI primitives.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Features
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- **Hero section** with CV download and project CTA.
+- **Project showcase** with interactive cards and links to live demos/repos.
+- **Filterable tech stack** grouped by categories.
+- **Contact form** with Formspree integration and fallback state.
+- **Internationalization** using locale JSON files (`en` / `pl`).
+- **Section-aware navigation** with active hash updates while scrolling.
+- **SEO baseline** (canonical URL, Open Graph, Twitter meta, sitemap, robots).
+
+## Tech Stack
+
+| Layer         | Technology                 |
+| ------------- | -------------------------- |
+| Framework     | React 19 + Vite            |
+| Language      | TypeScript                 |
+| Styling       | Tailwind CSS 4             |
+| UI Primitives | shadcn/ui, Base UI         |
+| Animation     | Framer Motion              |
+| Forms         | Formspree                  |
+| Icons         | Tabler Icons, Simple Icons |
+| i18n          | i18next, react-i18next     |
+| Notifications | Sonner                     |
+| Tooling       | ESLint, Prettier           |
+
+## Project Structure
+
+```text
+src/
+  components/
+    ui/
+  pages/
+    Home/
+    Projects/
+    Stack/
+    Contact/
+  locales/
+    en/
+    pl/
+  lib/
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Getting Started
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### 1. Install dependencies
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
 ```
+
+### 2. Run development server
+
+```bash
+npm run dev
+```
+
+### 3. Build for production
+
+```bash
+npm run build
+```
+
+### 4. Preview production build
+
+```bash
+npm run preview
+```
+
+## Environment Variables
+
+For contact form support, define:
+
+```bash
+VITE_FORMSPREE_ENDPOINT=your_formspree_form_id_or_endpoint
+```
+
+If missing, the app shows a fallback contact message instead of sending.
+
+## Notes
+
+- This repository is focused on frontend experience and presentation.
+- Content and interactions are actively iterated as part of ongoing portfolio improvements.
