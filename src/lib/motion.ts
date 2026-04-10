@@ -11,9 +11,9 @@ export const fadeUp = (delay = 0, distance = 16): Variants => ({
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.55,
+      duration: 0.8,
       delay,
-      ease: [0.22, 1, 0.36, 1],
+      ease: [0.22, 1, 0.5, 1],
     },
   },
 });
@@ -23,16 +23,16 @@ export const riseIn = (delay = 0, distance = 16): Variants => ({
   visible: {
     y: 0,
     transition: {
-      duration: 0.8,
+      duration: 1.0,
       delay,
-      ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
+      ease: [0.22, 1, 0.5, 1] as [number, number, number, number],
     },
   },
 });
 
 export const stagger = (
   delayChildren = 0,
-  staggerChildren = 0.08,
+  staggerChildren = 0.1,
 ): Variants => ({
   hidden: {},
   visible: {
