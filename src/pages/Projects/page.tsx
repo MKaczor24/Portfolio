@@ -11,7 +11,7 @@ import { fadeUp, revealViewport, stagger } from "@/lib/motion";
 import {
   heapUnderflowImg,
   reCropImg,
-  placeholderImg,
+  trustGateImg,
   authAppImg,
   wospImg,
   miniMeteoImg,
@@ -41,13 +41,13 @@ const projects = [
     codeHref: "https://github.com/MKaczor24/ReCrop",
   },
   {
-    title: "Next Case Study",
-    summaryKey: "projects.main.nextCaseStudy.summary",
-    image: placeholderImg,
-    altKey: "projects.main.nextCaseStudy.alt",
-    stack: ["React", "Tailwind", "Next.js", "MongoDB"],
-    liveHref: "#",
-    codeHref: "#",
+    title: "TrustGate",
+    summaryKey: "projects.main.trustGate.summary",
+    image: trustGateImg,
+    altKey: "projects.main.trustGate.alt",
+    stack: ["React", "Tailwind", "Next.js", "Supabase"],
+    liveHref: "https://trust-gate-hackaton-put.vercel.app/",
+    codeHref: "https://github.com/MKaczor24/TrustGate-Hackaton_PUT",
   },
 ];
 

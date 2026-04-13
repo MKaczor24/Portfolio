@@ -45,9 +45,9 @@
         "summary": "ReCrop is a full-stack web application that empowers users to easily manipulate images and videos through a modern, responsive UI. It offers tools for resizing, background removal and replacement, video compression, and file conversion - all powered by leading cloud services and AI integrations.",
         "alt": "ReCrop project preview"
       },
-      "nextCaseStudy": {
-        "summary": "An upcoming production project - architecture decisions and measurable outcomes documented along the way.",
-        "alt": "Upcoming project placeholder"
+      "trustGate": {
+        "summary": "TrustGate is a full-stack app for fast analysis of suspicious messages, links, QR codes, and screenshots. It combines AI-assisted risk scoring with an RBAC dashboard, incident queue workflows, and security analytics for response teams. Built as part of the PUT Cyber Days 2026 hackathon (top 3).",
+        "alt": "TrustGate project preview"
       }
     },
     "side": {
