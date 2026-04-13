@@ -46,7 +46,7 @@
         "alt": "ReCrop project preview"
       },
       "trustGate": {
-        "summary": "TrustGate is a full-stack app for fast analysis of suspicious messages, links, QR codes, and screenshots. It combines AI-assisted risk scoring with an RBAC dashboard, incident queue workflows, and security analytics for response teams. Built as part of the PUT Cyber Days 2026 hackathon (top 3).",
+        "summary": "TrustGate is a full-stack app for fast analysis of suspicious messages, links, QR codes, and screenshots. It combines AI-assisted risk scoring with an RBAC dashboard, incident queue workflows, and security analytics for response teams. Built as part of the PUT Cyber Days 2026 hackathon landed us a spot in the top 3.",
         "alt": "TrustGate project preview"
       }
     },
