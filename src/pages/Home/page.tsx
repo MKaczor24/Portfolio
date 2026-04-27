@@ -6,7 +6,7 @@ import { Section } from "@/components/section/Section";
 import { revealViewport, riseIn, stagger } from "@/lib/motion";
 import profilePreview from "@/assets/profile-hero.webp";
 import bgImg from "@/assets/bg.webp";
-import CV_formal from "@/assets/CV_formal.pdf";
+import CV_formal from "@/assets/CV_MichałKaczor.pdf";
 
 export default function Home() {
   const { t } = useTranslation();
