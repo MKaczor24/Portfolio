@@ -6,6 +6,7 @@ import wospImg from "@/assets/wosp.webp";
 import miniMeteoImg from "@/assets/minimeteo.webp";
 import shoppingImg from "@/assets/shopping.webp";
 import placeholderImg from "@/assets/profile-hero.webp";
+import profilePic from "@/assets/portfolioPic.webp";
 
 export {
   heapUnderflowImg,
@@ -16,4 +17,5 @@ export {
   miniMeteoImg,
   shoppingImg,
   placeholderImg,
+  profilePic
 };

@@ -4,9 +4,9 @@ import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Section } from "@/components/section/Section";
 import { revealViewport, riseIn, stagger } from "@/lib/motion";
-import profilePreview from "@/assets/profile-hero.webp";
 import bgImg from "@/assets/bg.webp";
 import CV_formal from "@/assets/CV_MichałKaczor.pdf";
+import { profilePic } from "@/assets";
 
 export default function Home() {
   const { t } = useTranslation();
@@ -90,7 +90,7 @@ export default function Home() {
           <div className="border-border/60 from-card/85 to-card/45 shadow-background relative mx-auto w-full max-w-md rounded-2xl border bg-linear-to-br p-4 shadow-md backdrop-blur-md">
             <div className="bg-primary/20 pointer-events-none absolute top-10 left-10 h-28 w-28 rounded-full blur-2xl" />
             <img
-              src={profilePreview}
+              src={profilePic}
               alt={t("home.profileAlt")}
               width={900}
               height={1100}
