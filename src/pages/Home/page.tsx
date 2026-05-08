@@ -60,7 +60,7 @@ export default function Home() {
                 size="lg"
                 className="bg-primary/80 text-primary-foreground hover:bg-primary/75 shadow-background h-14 rounded-lg px-7 text-base font-semibold shadow-md transition-all duration-300 hover:-translate-y-0.5"
               >
-                <a href={CV_formal} download>
+                <a href={CV_formal} download id="resume-download">
                   {t("home.ctaResume")}
                   <IconFileCv size={24} />
                 </a>
