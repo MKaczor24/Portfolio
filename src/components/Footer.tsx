@@ -29,6 +29,11 @@ const socials = [
 export default function Footer() {
   const { t } = useTranslation();
 
+  const openConsent = () => {
+    if (typeof window === "undefined") return;
+    window.dispatchEvent(new Event("cmp:open"));
+  };
+
   return (
     <footer className="relative isolate overflow-hidden px-6 py-6 md:px-10 lg:px-16">
       <div className="border-border/50 bg-background/55 shadow-background relative mx-auto w-full max-w-7xl overflow-hidden rounded-2xl border px-5 py-4 shadow-md backdrop-blur-md md:px-6 md:py-5">
@@ -84,6 +89,15 @@ export default function Footer() {
                 </>
                 {t("footer.backToTop")}
               </a>
+            </Button>
+            <Button
+              type="button"
+              variant="ghost"
+              size="sm"
+              className="rounded-lg px-2 text-xs"
+              onClick={openConsent}
+            >
+              {t("footer.cookieSettings")}
             </Button>
           </div>
         </div>

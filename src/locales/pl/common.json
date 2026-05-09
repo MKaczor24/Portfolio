@@ -109,6 +109,13 @@
     "tag": "Portfolio dev",
     "thanks": "Dzięki za poświęcony czas.",
     "navAria": "Nawigacja stopki",
-    "backToTop": "Wróć na górę"
+    "backToTop": "Wróć na górę",
+    "cookieSettings": "Ustawienia cookies"
+  },
+  "consent": {
+    "title": "Ustawienia prywatności",
+    "description": "Używam ciasteczek analitycznych, aby zrozumieć, jak strona jest używana. Możesz zaakceptować lub odrzucić.",
+    "accept": "Akceptuj",
+    "decline": "Odrzuć"
   }
 }

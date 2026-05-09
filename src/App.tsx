@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Home from "./pages/Home/page";
 import SectionFallback from "./components/section/SectionFallback";
+import CookieConsent from "./components/CookieConsent";
 
 const Projects = lazy(() => import("./pages/Projects/page"));
 const Stack = lazy(() => import("./pages/Stack/page"));
@@ -44,6 +45,7 @@ export function App() {
         </div>
       </div>
       <Footer />
+      <CookieConsent />
     </div>
   );
 }

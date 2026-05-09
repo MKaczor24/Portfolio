@@ -109,6 +109,13 @@
     "tag": "Dev portfolio",
     "thanks": "Thanks for your time.",
     "navAria": "Footer Navigation",
-    "backToTop": "Back to top"
+    "backToTop": "Back to top",
+    "cookieSettings": "Cookie settings"
+  },
+  "consent": {
+    "title": "Privacy settings",
+    "description": "We use analytics cookies to understand how the site is used. You can accept or decline.",
+    "accept": "Accept",
+    "decline": "Decline"
   }
 }
